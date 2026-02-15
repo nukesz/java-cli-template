@@ -1,6 +1,6 @@
 # Java CLI Template
 
-Minimal Java CLI template using Picocli and Gradle.
+Minimal Java CLI template using Gradle.
 
 ## Run
 
@@ -19,6 +19,8 @@ Minimal Java CLI template using Picocli and Gradle.
 ```bash
 ./gradlew nativeCompile
 ```
+
+This uses the GraalVM Native Build Tools Gradle plugin.
 
 Native binary output:
 - `build/native/nativeCompile/java-cli-template`

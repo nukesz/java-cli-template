@@ -1,5 +1,6 @@
 plugins {
     id 'application'
+    id 'org.graalvm.buildtools.native' version '0.10.3'
 }
 
 group = 'org.example'
@@ -22,21 +23,13 @@ test {
     useJUnitPlatform()
 }
 
-tasks.register('nativeCompile', Exec) {
-    dependsOn tasks.jar
-
-    def outputFile = layout.buildDirectory.file('native/nativeCompile/java-cli-template')
-    inputs.file(tasks.jar.archiveFile)
-    outputs.file(outputFile)
-
-    doFirst {
-        outputFile.get().asFile.parentFile.mkdirs()
+graalvmNative {
+    toolchainDetection = false
+    binaries {
+        main {
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(JavaVersion.current().majorVersion.toInteger())
+            }
+        }
     }
-
-    commandLine(
-        'native-image',
-        '-jar',
-        tasks.jar.archiveFile.get().asFile.absolutePath,
-        outputFile.get().asFile.absolutePath
-    )
 }

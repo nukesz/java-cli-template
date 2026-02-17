@@ -1,38 +1,40 @@
-# Java CLI Template
+# 💻 Java CLI Template
 
-Minimal Java CLI template using Gradle.
+Starter template for building and releasing Java CLI apps (JAR + native binary).
 
-## Run
+## Use This Template
+
+1. Click **Use this template** on GitHub.
+2. Create your new repository.
+3. Update:
+- `settings.gradle` (`rootProject.name`)
+- `build.gradle` (`group`, `version`)
+- `src/main/java/org/example/Main.java`
+
+## Quick Start
 
 ```bash
 ./gradlew run
 ```
 
-## Build
+## Release Output
+
+Tag a version (for example `v0.1.0`) to trigger the release workflow:
 
 ```bash
-./gradlew build
+git tag v0.1.0
+git push origin v0.1.0
 ```
 
-## Native Build
+Your users can then download native binaries from:
+`https://github.com/<your-org>/<your-repo>/releases`
+
+Example (Linux/macOS):
 
 ```bash
-./gradlew nativeCompile
+curl -fL -o <your-app-name> "https://github.com/<your-org>/<your-repo>/releases/latest/download/<your-app-name>-linux-amd64"
+chmod +x <your-app-name>
+./<your-app-name>
 ```
 
-This uses the GraalVM Native Build Tools Gradle plugin.
-
-Native binary output:
-- `build/native/nativeCompile/java-cli-template`
-
-## CI and Release
-
-- `CI` (`.github/workflows/ci.yml`): runs on commit pushes and pull requests.
-- `Release` (`.github/workflows/release.yml`): runs on tags matching `v*`, builds JAR + native binary, and publishes a GitHub Release.
-
-Release trigger example:
-
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
+Contributor/build details: `CONTRIBUTING.md`.

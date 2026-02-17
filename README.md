@@ -4,7 +4,7 @@ Starter template for building and releasing Java CLI apps (JAR + native binary).
 
 ## Use This Template
 
-1. Click **Use this template** on GitHub.
+1. Click [**Use this template**](https://github.com/nukesz/java-cli-template/generate).
 2. Create your new repository.
 3. Update:
 - `settings.gradle` (`rootProject.name`)
